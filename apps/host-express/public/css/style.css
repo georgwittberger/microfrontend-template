@@ -1,0 +1,47 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 3rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+  color: blue;
+}
+
+a[href]:hover,
+a[href]:focus-visible {
+  text-decoration: underline;
+}
+
+.main-heading {
+  margin-block-end: 2rem;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.text {
+  margin-block: 1rem;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: transparent;
+}
+
+.error {
+  border: 1px solid red;
+  border-inline-start-width: 4px;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  color: red;
+}

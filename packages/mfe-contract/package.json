@@ -1,0 +1,9 @@
+{
+  "name": "mfe-contract",
+  "description": "Contract between microfrontends and their host",
+  "version": "0.0.0",
+  "author": "Georg Wittberger",
+  "license": "MIT",
+  "private": true,
+  "types": "./index.d.ts"
+}

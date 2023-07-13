@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/preflight.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/react@18.2.0.min.js" defer></script>
+    <script src="/js/react-dom@18.2.0.min.js" defer></script>
+  </head>
+  <body>
+    <h1 class="main-heading">Service Page</h1>
+    <div id="container-service-mfe">
+      <div aria-live="polite" class="skeleton">Loading service app</div>
+    </div>
+    <template id="error-service-mfe">
+      <div role="alert" class="error">
+        Error: Service app could not be loaded!
+      </div>
+    </template>
+    <p class="text"><a href="/">Go to home page</a></p>
+    <script>
+      function mountServiceMFE() {
+        self.ServiceMFE(document.getElementById("container-service-mfe"), {
+          message: "<%= service.message %>",
+        });
+      }
+      function showServiceMFEError() {
+        document.getElementById("container-service-mfe").innerHTML =
+          document.getElementById("error-service-mfe").innerHTML;
+      }
+    </script>
+    <script
+      src="<%= service.moduleUrl %>"
+      onload="mountServiceMFE()"
+      onerror="showServiceMFEError()"
+      defer
+    ></script>
+  </body>
+</html>

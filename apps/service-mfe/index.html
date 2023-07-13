@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microfrontend Test Page</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import("./src/main.tsx")
+        .then(({ default: mount }) => {
+          mount(document.getElementById("root"), {
+            message: "Hello from Host!",
+          });
+        })
+        .catch((error) => {
+          console.error("Error loading main module", error);
+        });
+    </script>
+  </body>
+</html>

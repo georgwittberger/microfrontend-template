@@ -1,0 +1,13 @@
+{
+  "name": "microfrontend-template",
+  "description": "Project template for microfrontends",
+  "version": "0.0.0",
+  "author": "Georg Wittberger",
+  "license": "MIT",
+  "private": true,
+  "scripts": {},
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}
