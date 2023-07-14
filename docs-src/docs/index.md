@@ -7,21 +7,22 @@ sidebar_position: 1
 
 ## Overview
 
-[Microfrontends](https://micro-frontends.org/) is the concept of composing a web page from multiple parts which can be deployed independently. The goal is to avoid rebuilding and deploying the application rendering the HTML document when only the code of a certain page component needs to be updated. This approach can not only save server resources for larger applications but also enables development teams to ship features more independently.
+[Microfrontends](https://micro-frontends.org/) is the concept of composing a web page from smaller frontend applications which can be deployed independently. The goal is to avoid rebuilding and deploying applications which have not changed and enabling separate teams to work on dedicated application parts independently with tools and frameworks of their choice.
 
-![Microfrontends Overview](./img/microfrontends-overview.excalidraw.png)
+![Microfrontends Overview](./img/microfrontends-overview.drawio.svg)
 
-In the diagram above, assume that the host application is providing the HTML document of the web application and is managed by team 1 which deploys that application to server 1. On some page inside the host application there are embedded mini apps which are mostly independent of each other. These mini apps can be integrated as microfrontends A and B, so that their dedicated teams 2 and 3 can deploy them on their own on server 2 and 3 respectively.
-
-Whenever teams 2 and 3 want to update their mini app they should not have to request team 1 to redeploy their host application. Instead they simply deploy a new version of their microfrontends and browsers should fetch the updated resources when rendering the page of the host application.
+In the diagram above, assume that the HTML document of the web application is provided by an application developed by team 1. On the web page there is a partial application developed by team 2. This partial application can be integrated as a microfrontend so that team 2 can deploy changes without having to ask team 1 to deploy their web application.
 
 ## Approaches
 
-All contemporary approaches to implement microfrontends rely on dynamically loading JavaScript code required for partial applications from sources which can be updated independently from the host application. In the context of web applications this typically means that browsers request a JavaScript file from a server which is managed separately from the host application.
+Composition of the web page can be performed server-side or client-side.
+
+- **Server-side composition** works by processing HTML documents with a special server application before they are sent to the browser. Such an application can perform server-side includes allowing one application to provide a document with placeholders and filling these gaps with content retrieved from other applications. While this may be a viable solution for mainly static content it is out of scope for this project template.
+- **Client-side composition** works by processing HTML documents directly in the browser. One application - we call it the host application - serves the HTML document including some JavaScript code to dynamically load external JavaScript files required for partial applications and runs their code. These external microfrontend files can be updated independently. Such approaches are more suitable for highly interactive microfrontends and this project template focuses on this technique.
 
 ### ES Modules and Import Maps
 
-Modern JavaScript supports importing code from remote sources. This is what we are going to use in this project template.
+Modern JavaScript supports [importing modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) from remote sources. This is what we are going to use in this project template.
 
 ```js
 // Static import (works only inside <script type="module">)
