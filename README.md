@@ -1,6 +1,6 @@
 # Microfrontend Template
 
-Project template for microfrontends.
+Project template for microfrontends. See [documentation](https://georgwittberger.github.io/microfrontend-template/).
 
 ## Getting Started
 

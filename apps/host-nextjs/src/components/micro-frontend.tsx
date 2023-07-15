@@ -34,7 +34,7 @@ export type MicroFrontendProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 /**
- * Component rendering a microfrontend with given module identifier and props.
+ * Component rendering a microfrontend with given module URL and props.
  */
 export const MicroFrontend: FC<MicroFrontendProps> = ({
   module,
