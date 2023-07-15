@@ -9,18 +9,16 @@ sidebar_position: 1
 
 With a growing number of host applications or microfrontends it becomes more important to standardize the way how they are integrated. This allows host applications to implement a generic solution to embed microfrontends. The approach should also be framework-agnostic so that teams can decide which libraries they want to use for building their applications.
 
-Microfrontends should be deployable without having to deploy their host applications. The most general approach to make this happen is by hosting a separate JavaScript module which exports a mount function. Loading the microfrontend works as illustrated in the diagram below.
+Microfrontends should be deployable without having to deploy their host applications. The most general approach to make this happen is by hosting a separate JavaScript module which exports a _mount function_. Loading the microfrontend works as illustrated in the diagram below.
 
-![Integration Overview](./img/integration-overview.excalidraw.png)
+![Integration Overview](./img/integration-overview.drawio.svg)
 
-1. The browser requests the HTML document from host application.
-2. The host application server provides the HTML document.
-3. The host application puts a container element for the microfrontend in the HTML document.
-4. The host application initiates a request to load a separate JavaScript module from the microfrontend server.
-5. The microfrontend server provides the JavaScript module which exports a mount function.
-6. The host application calls the mount function and passes it a reference to the container element.
+1. The browser requests the HTML document from the host application.
+2. The web page of the host application includes a container element for the microfrontend.
+3. The web page of the host application executes some JavaScript code to import a separate JavaScript module from the microfrontend server.
+4. The web page of the host application calls the mount function exported by the JavaScript module and passes it a reference to the container element.
 
-It is necessary that host applications and microfrontends agree on a standardized shape of the mount function and its behavior. The suggestion of this project template is described in the following sections.
+It is necessary that host applications and microfrontends agree on a standardized signature of the mount function and its behavior. The suggestion of this project template is described in the following sections.
 
 :::info
 
