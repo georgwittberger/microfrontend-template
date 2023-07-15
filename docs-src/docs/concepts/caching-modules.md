@@ -48,6 +48,9 @@ The `Cache-Control` header tells the browser and intermediate gateways that reso
 
 The benefit of this approach is that it does not require any server requests for revalidation once users have the microfrontend resources locally. Microfrontends are rendered almost instantly in this case.
 
-The caveat is that import URLs or import maps must be updated in host applications every time a microfrontend deploys a new version. This somehow counters the original idea of microfrontends not having to adjust anything in the host applications when microfrontends are updated. The authors of [single-spa describe a technique](https://single-spa.js.org/docs/recommended-setup#deployment-and-continuous-integration-ci) which requires an additional [import-map-deployer](https://github.com/single-spa/import-map-deployer) service in your deployment infrastructure to update import maps in a concurrent-safe way.
+The caveat is that import URLs or import maps must be updated every time a microfrontend deploys a new version. Deployment setup is more complicated. The authors of [single-spa describe some solutions](https://single-spa.js.org/docs/recommended-setup#deployment-and-continuous-integration-ci) to the problem.
+
+- Host applications use import maps for microfrontend modules as well. Deployments of microfrontends must invoke the [import-map-deployer](https://github.com/single-spa/import-map-deployer) service which you have to set up in your production environment to update import maps in a concurrent-safe way.
+- Host applications use persistent URLs for microfrontend modules but these resource addresses redirect to the latest hashed URL via status code `302 Found`. Therefore, host applications do not have to adjust anything when new microfrontend versions are deployed. Deployments of microfrontends must take care of updating the redirect target URL of their canonical module address.
 
 This approach may be suitable if you really want to avoid revalidation requests or you cannot control HTTP caching headers in responses of microfrontend resources, e.g. because you are using a CDN.
