@@ -1,6 +1,6 @@
 ---
 description: Sharing libraries among microfrontends
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Shared Libraries
@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => ({
       output: {
         /**
          * 2. For UMD bundle specify global variable names for shared libraries.
+         *    Make sure these names match the ones exposed by the libraries!
          */
         globals: {
           react: "React",
@@ -84,15 +85,21 @@ This project template provides a React component in the file `apps/host-nextjs/s
 
 ## Global Variables in Host Applications using UMD Bundles
 
-The host application must include `<script>` tags to load UMD/IIFE versions of shared libraries before loading any UMD bundles of microfrontends.
+Host applications which load UMD/IIFE bundles of microfrontends must include `<script>` tags to load UMD/IIFE versions of shared libraries before loading any microfrontend modules.
 
 Example for React:
 
 ```html
 <html lang="en">
   <head>
-    <script src="/js/react@18.2.0.min.js" defer></script>
-    <script src="/js/react-dom@18.2.0.min.js" defer></script>
+    <script
+      src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"
+      defer
+    ></script>
   </head>
   <body>
     <!-- ... -->
