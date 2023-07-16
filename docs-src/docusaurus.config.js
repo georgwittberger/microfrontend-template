@@ -36,6 +36,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: "img/social.drawio.png",
       navbar: {
         title: "Microfrontend Template",
         items: [
